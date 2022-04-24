@@ -1,0 +1,10 @@
+/**
+* CG Gallery - Joomla Module 
+* Version			: 2.1.0
+* Package			: Joomla 4.0.x
+* copyright 		: Copyright (C) 2021 ConseilGouz. All rights reserved.
+* license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+*/
+.cg_gallery { /* hide gallery when starting */
+	display: none
+}

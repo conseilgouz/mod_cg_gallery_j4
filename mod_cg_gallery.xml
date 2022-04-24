@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+	type="module"
+	client="site"
+	method="upgrade">
+	<name>CG Gallery</name>
+	<author>ConseilGouz</author>
+	<creationDate>September 2021</creationDate>
+	<copyright>Copyright (C) 2021 ConseilGouz. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>
+	<authorUrl>www.conseilgouz.com</authorUrl>
+	<version>2.1.0</version>
+	<description>CGGALDESC</description>
+	<namespace path="src">ConseilGouz\Module\CGGallery</namespace>
+	<scriptfile>script.php</scriptfile>
+	<files>
+		<filename module="mod_cg_gallery">mod_cg_gallery.php</filename>
+		<filename>index.html</filename>
+		<filename>mod_cg_gallery.xml</filename>
+		<filename>slidelist.xml</filename>
+		<filename>slidelistk2.xml</filename>
+		<folder>tmpl</folder>
+		<folder>src</folder>
+	</files>
+	<media destination="mod_cg_gallery" folder="media">
+		<folder>js</folder>
+		<folder>css</folder>
+		<folder>unitegallery</folder>
+		<filename>index.html</filename>
+	</media>
+	
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_cg_gallery.ini</language>
+		<language tag="eb-GB">language/en-GB/en-GB.mod_cg_gallery.sys.ini</language>
+		<language tag="fr-FR">language/fr-FR/fr-FR.mod_cg_gallery.ini</language>
+		<language tag="fr-FR">language/fr-FR/fr-FR.mod_cg_gallery.sys.ini</language>
+		<language tag="en-GB">language/en-GB/mod_cg_gallery.ini</language>
+		<language tag="eb-GB">language/en-GB/mod_cg_gallery.sys.ini</language>
+		<language tag="fr-FR">language/fr-FR/mod_cg_gallery.ini</language>
+		<language tag="fr-FR">language/fr-FR/mod_cg_gallery.sys.ini</language>
+	</languages>
+	
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name = "noteaff1" type="note" label="SAG_NOTE" />
+			</fieldset>
+			<fieldset name="general" label="SAG_GENE">
+				<field 	name = "noteaff" type="note" label="SAG_GENENOTE" />
+				<field	name="ug_type" 	type="list" 	default="tiles"
+					label="SAG_TYPE"	description="SAG_TYPEDESC"	>
+				<option value="tiles">SAG_TYPETILES</option>
+				<option value="grid">SAG_TYPEGRID</option>
+				<option value="carousel">SAG_TYPECAR</option>
+				<option value="slider">SAG_TYPESLIDER</option>
+				</field>
+				<field name = "noteslider" type="note" label="SAG_TYPESLIDERNOTE"
+					showon="ug_type:slider"	/>
+				<field 
+				name="ug_tiles_type"
+				type="list"
+				showon="ug_type:tiles"
+				label="SAG_TYPETILES_TYPE"
+				description="SAG_TYPETILES_TYPEDESC"
+					>
+					<option value="column">SAG_TYPETILES_COL</option>
+					<option value="justified">SAG_TYPETILES_JUST</option>
+					<option value="nested">SAG_TYPETILES_NEST</option>
+					<option value="tilesgrid">SAG_TYPETILES_GRID</option>
+				</field>
+				<field 
+				name="ug_tile_width"
+				type="text"
+				default="200"
+				class="validate-numeric"
+				showon="ug_type:tiles[AND]ug_tiles_type:nested[OR]ug_type:carousel,slider"
+				label="SAG_TILE_WIDTH"
+				description="SAG_TILE_WIDTHDESC"
+				/>
+				<field 
+				name="ug_min_columns"
+				type="text"
+				default="2"
+				showon="ug_type:tiles[AND]ug_tiles_type:column"
+				label="SAG_MIN_COL"
+				class="validate-numeric"
+				description="SAG_MIN_COLDESC"
+				/>
+				<field 
+				name="ug_tile_height"
+				type="text"
+				default="150"
+				class="validate-numeric"
+				showon="ug_type:tiles[AND]ug_tiles_type:justified,tilesgrid[OR]ug_type:carousel,slider"
+				label="SAG_IMGHEIGHT"
+				description="SAG_IMGHEIGHTDESC"
+				/>
+				<field 
+				name="ug_grid_num_rows"
+				type="text"
+				default="1"
+				class="validate-numeric"
+				showon="ug_type:tiles[AND]ug_tiles_type:tilesgrid"
+				label="SAG_NUMROWS"
+				description="SAG_NUMROWSDESC"
+				/>
+				<field 
+				name="ug_space_between_rows"
+				type="text"
+				default="15"
+				class="validate-numeric"
+				showon="ug_type:tiles[AND]ug_tiles_type:tilesgrid,grid"
+				label="SAG_SPACEROW"
+				description="SAG_SPACEROWDESC"
+				/>
+				<field 
+				name="ug_space_between_cols"
+				type="text"
+				default="15"
+				class="validate-numeric"
+				showon="ug_type:tiles,grid,carousel"
+				label="SAG_SPACECOL"
+				description="SAG_SPACECOLDESC"
+				/>
+				<field 
+				name="ug_carousel_autoplay_timeout"
+				type="text"
+				default="5000"
+				class="validate-numeric"
+				showon="ug_type:carousel,slider"
+				label="SAG_DELAY"
+				description="SAG_DELAYDESC"
+				/>
+				<field 
+				name="ug_carousel_scroll_duration"
+				type="text"
+				default="500"
+				class="validate-numeric"
+				showon="ug_type:carousel,slider"
+				label="SAG_TRANSITION"
+				description="SAG_TRANSITIONDESC"
+				/>
+				<field 
+				name="ug_texte"
+				type="list"
+				label="SAG_TEXT"
+				description="SAG_TEXTDESC"
+				>
+				<option value="true">SAG_TEXTTRUE</option>
+				<option value="fixe">SAG_TEXTFIXE</option>
+				<option value="false">SAG_TEXTHIDE</option>
+				</field>
+				<field 
+				name="ug_text_lgth"
+				showon="ug_texte:true"
+				type="text"
+				default="100"
+				label="SAG_TEXTLGTH"
+				description="SAG_TEXTLGTHDESC"
+				/>
+				<field 
+				name="ug_link"
+				type="list"
+				default="false"
+				label="SAG_LINK"
+				description="SAG_LINKDESC"
+				>
+				<option value="true">JYES</option>
+				<option value="false">JNO</option>
+				</field>
+				<field 
+				name="ug_lightbox"
+				type="list"
+				default="true"
+				label="SAG_LIGHTBOX"
+				description="SAG_LINKDESC"
+				>
+				<option value="true">JYES</option>
+				<option value="false">JNO</option>
+				</field>
+				<field 
+				name="ug_grid_thumbs_pos" type="list"
+				default="right"
+				label="SAG_GRID_THUMBS" 	description="SAG_GRID_THUMBSDESC"
+				showon="ug_type:grid">
+					<option value="left">SAG_POS_LEFT</option>
+					<option value="right">SAG_POS_RIGHT</option>
+					<option value="top">SAG_POS_TOP</option>
+					<option value="bottom">SAG_POS_BOTTOM</option>
+				</field>
+				<field name="ug_grid_show_icons" type="list" default="true"
+				showon="ug_type:grid"
+				label="SAG_GRID_ICONS"	description="SAG_GRID_ICONSDESC">
+					<option value="true">JYES</option>
+					<option value="false">JNO</option>
+				</field>
+			</fieldset>
+			<fieldset name="directory" 
+				label="SAG_IMGSEL"
+				addfieldpath="/modules/mod_cg_gallery/elements"
+				addrulepath="/modules/mod_cg_gallery/models/rules"
+				>
+				<field 
+				name = "notedir" type="note" label="SAG_DIRECTORYNOTE" 
+				/>
+				<field 
+				name="ug_dir_or_image"
+				type="list"
+				label="SAG_CHOOSE"
+				description="SAG_CHOOSEDESC"
+				>
+				<option value="dir">SAG_CHOOSEDIR</option>
+				<option value="file">SAG_CHOOSEFILE</option>
+				</field>
+				<field 
+					name = "notedirinit" type="note" label="SAG_CHOOSEDIRNOTE"
+					showon="ug_dir_or_image:dir"
+				/>
+				<field name="ug_autothumb" 
+					   type="hidden" 
+					   value="1" />
+				<field 
+					name="ug_big_dir" 
+					type="text"
+					default="images"
+					label="SAG_DIR" 
+					description="SAG_DIRDESC"
+					showon="ug_dir_or_image:dir"
+				/>
+				
+				<field 
+					name="ug_full_dir"
+					type="list"
+					label="SAG_DIRFULL"
+					description="SAG_DIRFULLDESC"
+					showon="ug_dir_or_image:dir"
+				>
+				<option value="true">JYES</option>
+				<option value="false">JNO</option>
+				</field>
+				<field 
+					name="ug_file_nb"
+					type="text"
+					showon="ug_dir_or_image:dir[AND]ug_full_dir:false"
+					default="5"
+					class="validate-numeric"
+					label="SAG_DIRNBR"
+					description="SAG_DIRNBRDESC"
+				/>
+				<field 
+					name = "noteimage" type="note" label="SAG_IMGNOTE"
+					showon="ug_dir_or_image:file"
+				/>
+		<field	showon="ug_dir_or_image:file"
+			name="ug_articles" type="radio"	default="articles"	class="btn-group"
+				label="SAG_ENTREE" description="SAG_ENTREEDESC" >
+				<option value="articles">SAG_ENTREEARTICLES</option> 
+				<option value="k2">K2</option> 
+		</field>
+		
+		<field name="slideslist" label="" type="subform" multiple ="true" 
+			showon="ug_dir_or_image:file[AND]ug_articles:articles"
+			formsource="modules/mod_cg_gallery/slidelist.xml" 					
+		/>
+		<field name="slideslist_k2" label="" type="subform" multiple ="true" 
+			showon="ug_dir_or_image:file[AND]ug_articles:k2"
+			formsource="modules/mod_cg_gallery/slidelistk2.xml" 					
+		/>
+				
+			</fieldset>
+			
+		</fields>
+	</config>
+	<updateservers>
+	<server type="extension" name="CG Gallery" priority="1">https://www.conseilgouz.com/updates/cg_gallery_update.xml
+	</server>
+	<server type="extension" name="CG Gallery" priority="2">http://432473037d.url-de-test.ws/updateserver/updates/cg_gallery_update.xml
+	</server>
+	</updateservers>
+
+</extension>
