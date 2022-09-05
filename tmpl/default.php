@@ -1,9 +1,9 @@
 <?php
 /**
 * CG Gallery - Joomla Module 
-* Version			: 2.1.0
-* Package			: Joomla 4.0.x
-* copyright 		: Copyright (C) 2021 ConseilGouz. All rights reserved.
+* Version			: 2.2.0
+* Package			: Joomla 4.x
+* copyright 		: Copyright (C) 2022 ConseilGouz. All rights reserved.
 * license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
 */
 // no direct access
@@ -11,8 +11,9 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Filesystem\Folder;
 use ConseilGouz\Module\CGGallery\Site\Helper\CGGalleryHelper;
+use Joomla\CMS\Uri\Uri;
 
-
+$uri = Uri::getInstance();
 $nummod_sf		= $module->id;
 
 echo '<div id="cg_gallery_'.$module->id.'" data="'.$module->id.'" class="cg_gallery">';
@@ -60,15 +61,12 @@ if ($params->get('ug_dir_or_image') == "dir") { // images d'un répertoire
 			if ($link) {
 				echo '<a href="'.$link.'"'.$target.'>';
 			}
-			/*if (!JFile::exists($ug_thumb_dir.'/'.$bigfile)) {
-				CGGalleryHelper::thumbnailFromDir($ug_big_dir,$params->get('ug_compression'));
-			}*/
 			?>
 			<img alt="<?php echo $bigfile;?>" 
-		     src="<?php echo $ug_thumb_dir.'/'.$file;?>"
+		     src="<?php echo $uri->root().$ug_thumb_dir.'/'.$file;?>"
 			<?php if (JFile::exists($ug_big_dir.'/'.$bigfile)) {
 			?>
-				data-image="<?php echo ''.JURI::base(true).'/'.$ug_big_dir; ?>/<?php echo $bigfile;?>"
+				data-image="<?php echo $uri->root().$ug_big_dir; ?>/<?php echo $bigfile;?>"
 			<?php } else {?>
 				data-image="<?php echo $modulefield;?>unitegallery/images/pasdimage.png" <?php } ?>
 				data-description="<?php echo $description;?>"
@@ -102,15 +100,11 @@ if ($params->get('ug_dir_or_image') == "dir") { // images d'un répertoire
 				if ($link) {
 					echo '<a href="'.$link.'"'.$target.'>'; // lien externe : nouvelle fen�tre
 				}
-				/* if (!JFile::exists($ug_thumb_dir.'/'.$bigfile)) {
-					CGGalleryHelper::thumbnailFromDir($ug_big_dir,$params->get('ug_compression'));
-				}
-				*/
 				?>
 				<img alt="<?php echo $bigfile;?>" 
-					src="<?php echo $ug_thumb_dir.'/'.$files[$i];?>"
+					src="<?php echo $uri->root().$ug_thumb_dir.'/'.$files[$i];?>"
 				<?php if (JFile::exists($ug_big_dir.'/'.$files[$i])) { ?>
-					data-image="<?php echo ''.JURI::base(true).'/'.$ug_big_dir; ?>/<?php echo $bigfile;?>"
+					data-image="<?php echo $uri->root().$ug_big_dir; ?>/<?php echo $bigfile;?>"
 				<?php } else {?>
 					data-image="<?php echo $modulefield;?>unitegallery/images/pasdimage.png" 
 				<?php } ?>
@@ -135,7 +129,6 @@ if ($params->get('ug_dir_or_image') == "dir") { // images d'un répertoire
 		$imgthumb = $imgname;
 		$pos = strrpos($imgthumb,'/');
 		$len = strlen($imgthumb);
-		// $imgthumb = substr($imgthumb,0,$pos+1).'th/'.substr($imgthumb,$pos+1,$len);
 		$imgtitle = $item->file_name;
 		$item->slidearticleid = $item->file_id;
 		$link = null;
@@ -151,15 +144,12 @@ if ($params->get('ug_dir_or_image') == "dir") { // images d'un répertoire
 		if (isset($link)) {
 			echo '<a href="'.$link.'">';
 		}
-		/* if (!JFile::exists($imgthumb)) {
-		    CGGalleryHelper::thumbnailOneFile($imgname,$params->get('ug_compression'));
-		}*/
 		?>
 				<img alt="<?php echo $imgcaption;?>" 
-					src="<?php echo $imgthumb;?>"
+					src="<?php echo $uri->root().$imgthumb;?>"
 					<?php if ($imgname)
 					{
-					?> data-image="<?php echo $baseurl.'/'.$imgname; ?>"
+					?> data-image="<?php echo $uri->root().$imgname; ?>"
 					<?php }
 					else { ?> 
 					data-image="<?php echo $modulefield;?>unitegallery/images/pasdimage.png" 

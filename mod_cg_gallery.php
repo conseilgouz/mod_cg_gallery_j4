@@ -1,9 +1,9 @@
 <?php
 /**
 * CG Gallery - Joomla Module 
-* Version			: 2.1.0
-* Package			: Joomla 4.0.x
-* copyright 		: Copyright (C) 2021 ConseilGouz. All rights reserved.
+* Version			: 2.2.0
+* Package			: Joomla 4.x
+* copyright 		: Copyright (C) 2022 ConseilGouz. All rights reserved.
 * license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
 */
 // no direct access
@@ -41,7 +41,8 @@ $ug_lightbox = $params->get('ug_lightbox');
 $ug_grid_thumbs_pos = $params->get('ug_grid_thumbs_pos','right');
 $ug_grid_show_icons = $params->get('ug_grid_show_icons','true');
 
-HTMLHelper::_('bootstrap.framework');						 
+// HTMLHelper::_('bootstrap.framework');		
+				 
 $document->addStyleSheet($modulefield.'unitegallery/css/unite-gallery.css');
 $document->addScript($modulefield.'unitegallery/js/unitegallery.min.js');
 $document->addScriptOptions('cg_gallery_'.$module->id, 
