@@ -42,6 +42,7 @@ $ug_grid_thumbs_pos = $params->get('ug_grid_thumbs_pos','right');
 $ug_grid_show_icons = $params->get('ug_grid_show_icons','true');
 
 // HTMLHelper::_('bootstrap.framework');		
+HTMLHelper::_('jquery.framework'); 
 				 
 $document->addStyleSheet($modulefield.'unitegallery/css/unite-gallery.css');
 $document->addScript($modulefield.'unitegallery/js/unitegallery.min.js');
