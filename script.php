@@ -1,9 +1,9 @@
 <?php
 /**
 * CG Gallery Module  - Joomla 4.0.0 Module 
-* Version			: 2.1.0
+* Version			: 2.3.0
 * Package			: CG Gallery
-* copyright 		: Copyright (C) 2021 ConseilGouz. All rights reserved.
+* copyright 		: Copyright (C) 20221 ConseilGouz. All rights reserved.
 * license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
 */
 // No direct access to this file
@@ -16,8 +16,8 @@ use Joomla\CMS\Filesystem\File;
 
 class mod_cg_galleryInstallerScript
 {
-	private $min_joomla_version      = '3.9.0';
-	private $min_php_version         = '7.2';
+	private $min_joomla_version      = '3.10.0';
+	private $min_php_version         = '7.4';
 	private $name                    = 'CG Gallery';
 	private $exttype                 = 'module';
 	private $extname                 = 'cg_gallery';
@@ -106,6 +106,20 @@ class mod_cg_galleryInstallerScript
 				}
 			}
 		}
+		// remove obsolete update sites
+		$db = Factory::getDbo();
+		$query = $db->getQuery(true)
+			->delete('#__update_sites')
+			->where($db->quoteName('location') . ' like "%432473037d.url-de-test.ws/%"');
+		$db->setQuery($query);
+		$db->execute();
+		// CG Gallery is now on Github
+		$query = $db->getQuery(true)
+			->delete('#__update_sites')
+			->where($db->quoteName('location') . ' like "%conseilgouz.com/updates/cg_gallery%"');
+		$db->setQuery($query);
+		$db->execute();
+		
 	}
 
 	// Check if Joomla version passes minimum requirement

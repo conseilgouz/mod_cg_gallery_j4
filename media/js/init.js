@@ -1,8 +1,8 @@
 /**
 * CG Gallery - Joomla Module 
-* Version			: 2.1.0
+* Version			: 2.3.0
 * Package			: Joomla 4.0.x
-* copyright 		: Copyright (C) 2021 ConseilGouz. All rights reserved.
+* copyright 		: Copyright (C) 2022 ConseilGouz. All rights reserved.
 * license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
 */
 jQuery(document).ready(function($) {
@@ -43,7 +43,7 @@ function go_gallery (myid,options) {
 	if (options.ug_lightbox == "false") {
 		if (options.ug_link == "true") {
 			jQuery.extend($params,{tile_as_link:true});
-		} else { // 1.0.5 : disable buttons
+		} else { 
 			jQuery.extend($params,{tile_enable_icons:false});
 		}
 	}else {
@@ -59,6 +59,18 @@ function go_gallery (myid,options) {
 	} 
 	if (options.ug_type == "grid") { 
 		jQuery.extend($params,{gallery_theme:options.ug_type,grid_space_between_rows:parseInt(options.ug_space_between_rows),grid_space_between_cols:parseInt(options.ug_space_between_cols),slider_textpanel_enable_title: false,grid_num_cols:1, theme_panel_position : options.ug_grid_thumbs_pos});
+		if (options.ug_lightbox == "false") { // 1.1.4 : zoom
+			jQuery.extend($params,{slider_enable_fullscreen_button: false});
+		} else {
+			jQuery.extend($params,{slider_enable_fullscreen_button: true});
+		}
+		if (options.ug_zoom == "false") {
+			jQuery.extend($params,{slider_control_zoom: false});
+			jQuery.extend($params,{slider_enable_zoom_panel: false});
+		} else {
+			jQuery.extend($params,{slider_control_zoom: true});
+			jQuery.extend($params,{slider_enable_zoom_panel: true});
+		}
 		// TO do : gallery_width:900,gallery_height:700,thumb_width:70,thumb_height:70, 
 		if (options.ug_grid_show_icons == 'false') {
 			jQuery.extend($params,{slider_enable_arrows:false,slider_enable_progress_indicator:false,slider_enable_play_button:false,slider_enable_fullscreen_button:false,slider_enable_zoom_panel:false,	strippanel_enable_handle:false,	gridpanel_enable_handle:false});
@@ -74,7 +86,14 @@ function go_gallery (myid,options) {
 	if (options.ug_type == "slider") { 
 		jQuery.extend($params,{gallery_theme:options.ug_type,gallery_height:parseInt(options.ug_tile_height),gallery_width:parseInt(options.ug_tile_width),carousel_space_between_tiles:parseInt(options.ug_space_between_cols),slider_transition_speed:parseInt(options.ug_carousel_scroll_duration),gallery_play_interval:parseInt(options.ug_carousel_autoplay_timeout),slider_scale_mode: "fill",slider_enable_fullscreen_button: true});
 		if (options.ug_lightbox == "false") { // 1.1.4 : zoom
-				jQuery.extend($params,{slider_control_zoom: false});
+			jQuery.extend($params,{slider_enable_fullscreen_button: false});
+		} else {
+			jQuery.extend($params,{slider_enable_fullscreen_button: true});
+		}
+		if (options.ug_zoom == "false") {
+			jQuery.extend($params,{slider_control_zoom: false});
+		} else {
+			jQuery.extend($params,{slider_control_zoom: true});
 		}
 		if (options.ug_texte != "false") {
 			jQuery.extend($params,{slider_enable_text_panel:true,slider_textpanel_enable_title: false,slider_textpanel_desc_text_align: "center",slider_enable_bullets:false});

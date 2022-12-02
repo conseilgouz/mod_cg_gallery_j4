@@ -37,7 +37,7 @@ $ug_carousel_autoplay_timeout = $params->get('ug_carousel_autoplay_timeout');
 $ug_carousel_scroll_duration = $params->get('ug_carousel_scroll_duration');
 $ug_link = $params->get('ug_link');
 $ug_lightbox = $params->get('ug_lightbox');
-
+$ug_zoom = $params->get('ug_zoom','true');
 $ug_grid_thumbs_pos = $params->get('ug_grid_thumbs_pos','right');
 $ug_grid_show_icons = $params->get('ug_grid_show_icons','true');
 
@@ -57,7 +57,7 @@ $document->addScriptOptions('cg_gallery_'.$module->id,
 		  'ug_carousel_autoplay_timeout' => $ug_carousel_autoplay_timeout,
 		  'ug_carousel_scroll_duration' => $ug_carousel_scroll_duration,
 		  'ug_link'=> $ug_link,
-		  'ug_lightbox'=>$ug_lightbox,
+		  'ug_lightbox'=>$ug_lightbox,'ug_zoom'=>$ug_zoom,
 		  'ug_grid_thumbs_pos'=>$ug_grid_thumbs_pos, 'ug_grid_show_icons'=>$ug_grid_show_icons
 ));
 if ($ug_type == "tiles") {
