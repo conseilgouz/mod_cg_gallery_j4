@@ -1,9 +1,9 @@
 <?php
 /**
 * CG Gallery - Joomla Module 
-* Version			: 2.1.0
-* Package			: Joomla 4.0.x
-* copyright 		: Copyright (C) 2021 ConseilGouz. All rights reserved.
+* Version			: 2.3.1
+* Package			: Joomla 4.x/5.x
+* copyright 		: Copyright (C) 2023 ConseilGouz. All rights reserved.
 * license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
 */
 namespace ConseilGouz\Module\CGGallery\Site\Helper;
@@ -77,14 +77,7 @@ class CGGalleryHelper
 		
 		$j = new Version();
 		$version=substr($j->getShortVersion(), 0,1); 
-		if ($version == "4") { // Joomla 4.0
-			$model     = new ArticleModel(array('ignore_request' => true));
-		} else { // Joomla 3.x
-			\JLoader::register('ContentModel', JPATH_SITE . '/components/com_content/models/article.php');
-			\JLoader::register('FieldsHelper', JPATH_ADMINISTRATOR . '/components/com_fields/helpers/fields.php');
-			\JLoader::register('ContentHelperRoute', JPATH_SITE . '/components/com_content/helpers/route.php');	
-			$model     = \JModelLegacy::getInstance('Article', 'ContentModel', array('ignore_request' => true));
-		}
+		$model     = new ArticleModel(array('ignore_request' => true));
 		if (!$model) {return false;}
 		$app       = Factory::getApplication();
 		$appParams = $app->getParams();
@@ -119,7 +112,7 @@ class CGGalleryHelper
 			// We know that user has the privilege to view the article
 			$item->slug = $item->article->id . ':' . $item->article->alias;
 			$item->catslug = $item->article->catid ? $item->article->catid . ':' . $item->article->category_alias : $item->article->catid;
-			$link = Route::_(\ContentHelperRoute::getArticleRoute($item->slug, $item->catslug));
+			$link = Route::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catslug));
 		} else {
 			$app = Factory::getApplication();
 			$menu = $app->getMenu();

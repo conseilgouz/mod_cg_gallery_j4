@@ -1,17 +1,18 @@
 <?php
 /**
 * CG Gallery - Joomla Module 
-* Version			: 2.2.0
-* Package			: Joomla 4.x
-* copyright 		: Copyright (C) 2022 ConseilGouz. All rights reserved.
+* Version			: 2.3.1
+* Package			: Joomla 4.x/5.x
+* copyright 		: Copyright (C) 2023 ConseilGouz. All rights reserved.
 * license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
 */
 // no direct access
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Filesystem\Folder;
-use ConseilGouz\Module\CGGallery\Site\Helper\CGGalleryHelper;
+use Joomla\CMS\Filesystem\File;
 use Joomla\CMS\Uri\Uri;
+use ConseilGouz\Module\CGGallery\Site\Helper\CGGalleryHelper;
 
 $uri = Uri::getInstance();
 $nummod_sf		= $module->id;
@@ -64,7 +65,7 @@ if ($params->get('ug_dir_or_image') == "dir") { // images d'un répertoire
 			?>
 			<img alt="<?php echo $bigfile;?>" 
 		     src="<?php echo $uri->root().$ug_thumb_dir.'/'.$file;?>"
-			<?php if (JFile::exists($ug_big_dir.'/'.$bigfile)) {
+			<?php if (File::exists($ug_big_dir.'/'.$bigfile)) {
 			?>
 				data-image="<?php echo $uri->root().$ug_big_dir; ?>/<?php echo $bigfile;?>"
 			<?php } else {?>

@@ -1,9 +1,9 @@
 <?php
 /**
 * CG Gallery - Joomla Module 
-* Version			: 2.2.0
-* Package			: Joomla 4.x
-* copyright 		: Copyright (C) 2022 ConseilGouz. All rights reserved.
+* Version			: 2.3.1
+* Package			: Joomla 4.x/5x
+* copyright 		: Copyright (C) 2023 ConseilGouz. All rights reserved.
 * license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
 */
 // no direct access
@@ -11,13 +11,11 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\ModuleHelper;
 use Joomla\CMS\HTML\HTMLHelper;
-
-JLoader::registerNamespace('ConseilGouz\Module\CGGallery\Site', JPATH_SITE . '/modules/mod_cg_gallery/src', false, false, 'psr4');
-
+use Joomla\CMS\Uri\Uri;
 
 $document 		= Factory::getDocument();
-$baseurl 		= JURI::base();
-$modulefield	= ''.JURI::base(true).'/media/mod_cg_gallery/';
+$baseurl 		= URI::base();
+$modulefield	= ''.URI::base(true).'/media/mod_cg_gallery/';
 
 //Get this module id
 $nummod_sf		= $module->id;

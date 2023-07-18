@@ -1,9 +1,9 @@
 <?php
 /**
-* CG Gallery Module  - Joomla 4.0.0 Module 
-* Version			: 2.3.0
+* CG Gallery Module  - Joomla 4.x/5.x Module 
+* Version			: 2.3.1
 * Package			: CG Gallery
-* copyright 		: Copyright (C) 20221 ConseilGouz. All rights reserved.
+* copyright 		: Copyright (C) 2023 ConseilGouz. All rights reserved.
 * license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
 */
 // No direct access to this file
@@ -16,7 +16,7 @@ use Joomla\CMS\Filesystem\File;
 
 class mod_cg_galleryInstallerScript
 {
-	private $min_joomla_version      = '3.10.0';
+	private $min_joomla_version      = '4.0.0';
 	private $min_php_version         = '7.4';
 	private $name                    = 'CG Gallery';
 	private $exttype                 = 'module';
@@ -157,7 +157,7 @@ class mod_cg_galleryInstallerScript
 	}
 	private function uninstallInstaller()
 	{
-		if ( ! JFolder::exists(JPATH_PLUGINS . '/system/' . $this->installerName)) {
+		if ( ! Folder::exists(JPATH_PLUGINS . '/system/' . $this->installerName)) {
 			return;
 		}
 		$this->delete([
