@@ -10,7 +10,7 @@
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>
 	<authorUrl>www.conseilgouz.com</authorUrl>
-	<version>2.3.2</version>
+	<version>2.3.3</version>
 	<description>CGGALDESC</description>
 	<namespace path="src">ConseilGouz\Module\CGGallery</namespace>
 	<scriptfile>script.php</scriptfile>
@@ -39,7 +39,8 @@
 	
 	<config>
 		<fields name="params">
-			<fieldset name="basic">
+			<fieldset name="basic" addfieldprefix="ConseilGouz\Module\CGGallery\Site\Field">
+				<field name="version" type="version"  margintop="-3em" extension="mod_cg_gallery"/>
 				<field name = "noteaff1" type="note" label="SAG_NOTE" />
 			</fieldset>
 			<fieldset name="general" label="SAG_GENE">

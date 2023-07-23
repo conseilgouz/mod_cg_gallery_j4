@@ -2,6 +2,20 @@
 	<changelog>
 		<element>mod_cg_gallery</element>
 		<type>Module</type>
+		<version>2.3.3</version>
+        <note>
+            <item>Update : 23/07/2023</item>
+        </note>
+		<fix>
+			<item>use Joomla\Filesystem instead of Joomla\CMS\Filesystem classes</item>
+		</fix>
+		<addition>
+			<item>Version number from manifest</item> 
+		</addition>
+	</changelog>
+	<changelog>
+		<element>mod_cg_gallery</element>
+		<type>Module</type>
 		<version>2.3.2</version>
         <note>
             <item>Update : 08/07/2023</item>
