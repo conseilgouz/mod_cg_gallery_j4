@@ -6,7 +6,7 @@
 * copyright 		: Copyright (C) 2023 ConseilGouz. All rights reserved.
 * license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
 */
-namespace ConseilGouz\Module\CGGallery\Field;
+namespace ConseilGouz\Module\CGGallery\Site\Field;
 
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Factory;
