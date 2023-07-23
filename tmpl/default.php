@@ -9,8 +9,8 @@
 // no direct access
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Filesystem\Folder;
-use Joomla\CMS\Filesystem\File;
+use Joomla\Filesystem\Folder;
+use Joomla\Filesystem\File;
 use Joomla\CMS\Uri\Uri;
 use ConseilGouz\Module\CGGallery\Site\Helper\CGGalleryHelper;
 
@@ -30,11 +30,10 @@ if ($params->get('ug_dir_or_image') == "dir") { // images d'un répertoire
 	$files = Folder::files($ug_big_dir,null,null ,null , array('desc.txt','index.html','.htaccess'));
 	$desc = CGGalleryHelper::getDesc($ug_big_dir); // récupération fichier description s'il existe
 	if (count($files) == 0) { ?>
-		<img alt=""
-		src ="<?php echo $modulefield;?>unitegallery/images/pasdimage.png" 
+		<img src ="<?php echo $modulefield;?>unitegallery/images/pasdimage.png" 
 		data-image="<?php echo $modulefield;?>unitegallery/images/pasdimage.png" 
 						data-description=""
-						style="display:none">
+						style="display:none" alt="">
 	<?php 
 	} else {
 	$ug_thumb_dir = $ug_big_dir; // répertoire des miniatures
@@ -63,15 +62,14 @@ if ($params->get('ug_dir_or_image') == "dir") { // images d'un répertoire
 				echo '<a href="'.$link.'"'.$target.'>';
 			}
 			?>
-			<img alt="<?php echo $bigfile;?>" 
-		     src="<?php echo $uri->root().$ug_thumb_dir.'/'.$file;?>"
-			<?php if (File::exists($ug_big_dir.'/'.$bigfile)) {
+			<img src="<?php echo $uri->root().$ug_thumb_dir.'/'.$file;?>"
+			<?php if (is_file($ug_big_dir.'/'.$bigfile)) {
 			?>
 				data-image="<?php echo $uri->root().$ug_big_dir; ?>/<?php echo $bigfile;?>"
 			<?php } else {?>
 				data-image="<?php echo $modulefield;?>unitegallery/images/pasdimage.png" <?php } ?>
 				data-description="<?php echo $description;?>"
-				style="display:none">
+				style="display:none" alt="<?php echo $bigfile;?>" >
 		<?php
 			if ($link) { echo '</a>'; }
 			} 
@@ -102,15 +100,14 @@ if ($params->get('ug_dir_or_image') == "dir") { // images d'un répertoire
 					echo '<a href="'.$link.'"'.$target.'>'; // lien externe : nouvelle fen�tre
 				}
 				?>
-				<img alt="<?php echo $bigfile;?>" 
-					src="<?php echo $uri->root().$ug_thumb_dir.'/'.$files[$i];?>"
-				<?php if (JFile::exists($ug_big_dir.'/'.$files[$i])) { ?>
+				<img src="<?php echo $uri->root().$ug_thumb_dir.'/'.$files[$i];?>"
+				<?php if (is_file($ug_big_dir.'/'.$files[$i])) { ?>
 					data-image="<?php echo $uri->root().$ug_big_dir; ?>/<?php echo $bigfile;?>"
 				<?php } else {?>
 					data-image="<?php echo $modulefield;?>unitegallery/images/pasdimage.png" 
 				<?php } ?>
 				data-description="<?php echo $description;?>"
-				style="display:none">
+				style="display:none" alt="<?php echo $bigfile;?>" >
 			<?php 
 				if ($link) { echo '</a>'; }
 			}
@@ -146,8 +143,7 @@ if ($params->get('ug_dir_or_image') == "dir") { // images d'un répertoire
 			echo '<a href="'.$link.'">';
 		}
 		?>
-				<img alt="<?php echo $imgcaption;?>" 
-					src="<?php echo $uri->root().$imgthumb;?>"
+				<img src="<?php echo $uri->root().$imgthumb;?>"
 					<?php if ($imgname)
 					{
 					?> data-image="<?php echo $uri->root().$imgname; ?>"
@@ -156,11 +152,10 @@ if ($params->get('ug_dir_or_image') == "dir") { // images d'un répertoire
 					data-image="<?php echo $modulefield;?>unitegallery/images/pasdimage.png" 
 					<?php } ?>
 				data-description="<?php echo $imgdesc;?>"
-				style="display:none">
+				style="display:none" alt="<?php echo $imgcaption;?>" >
 	<?php
 				if (isset($link)) { echo '</a>'; }
 		} 
 }
 ?>	
 	</div>
-
