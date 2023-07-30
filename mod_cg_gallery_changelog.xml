@@ -2,6 +2,17 @@
 	<changelog>
 		<element>mod_cg_gallery</element>
 		<type>Module</type>
+		<version>2.3.4</version>
+        <note>
+            <item>Update : 30/07/2023</item>
+        </note>
+		<fix>
+			<item>$lang undefined in insall script</item>
+		</fix>
+	</changelog>
+	<changelog>
+		<element>mod_cg_gallery</element>
+		<type>Module</type>
 		<version>2.3.3</version>
         <note>
             <item>Update : 23/07/2023</item>

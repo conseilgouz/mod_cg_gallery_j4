@@ -24,6 +24,7 @@ class mod_cg_galleryInstallerScript
 	private $previous_version        = '';
 	private $dir           = null;
 	private $installerName = 'cg_galleryinstaller';
+	private $lang;
 	public function __construct()
 	{
 		$this->dir = __DIR__;
