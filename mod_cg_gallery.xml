@@ -10,7 +10,7 @@
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>
 	<authorUrl>www.conseilgouz.com</authorUrl>
-	<version>2.3.5</version>
+	<version>2.3.6</version>
 	<description>CGGALDESC</description>
 	<namespace path="src">ConseilGouz\Module\CGGallery</namespace>
 	<scriptfile>script.php</scriptfile>
@@ -232,7 +232,7 @@
 					name="ug_big_dir" 
 					type="folderlist"
 					default="images" recursive="true"
-					exclude="^administrator|^api|^cli|^components|^încludes|^language|^layouts|^libraries|^modules|^plugins"
+					exclude="^administrator|^api|^cli|^components|^includes|^language|^layouts|^libraries|^modules|^plugins"
 					label="SAG_DIR" 
 					description="SAG_DIRDESC"
 					showon="ug_dir_or_image:dir"
