@@ -2,6 +2,18 @@
 	<changelog>
 		<element>mod_cg_gallery</element>
 		<type>Module</type>
+		<version>2.3.5</version>
+        <note>
+            <item>Update : 06/09/2023</item>
+        </note>
+		<fix>
+			<item>Add Path::clean($root,'/') in getFolder function</item>
+			<item>Select images directory in a list instead of a text field to prevent errors</item>
+		</fix>
+	</changelog>
+	<changelog>
+		<element>mod_cg_gallery</element>
+		<type>Module</type>
 		<version>2.3.4</version>
         <note>
             <item>Update : 30/07/2023</item>

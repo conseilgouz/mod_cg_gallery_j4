@@ -1,7 +1,7 @@
 <?php
 /**
 * CG Gallery - Joomla Module 
-* Version			: 2.3.3
+* Version			: 2.3.5
 * Package			: Joomla 4.x/5.x
 * copyright 		: Copyright (C) 2023 ConseilGouz. All rights reserved.
 * license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
@@ -17,6 +17,7 @@ use Joomla\Component\Content\Site\Model\ArticleModel;
 use Joomla\Component\Content\Site\Helper\RouteHelper as ContentHelperRoute;
 use Joomla\Filesystem\Folder;
 use Joomla\Filesystem\File;
+use Joomla\Filesystem\Path;
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Version;
 
@@ -50,6 +51,7 @@ class CGGalleryHelper
 		if (strpos($root,'$') !== false) { // répertoire incorrect: il reste des zones 
 			return false;
 		}
+		$root = Path::clean($root,'/');
 		if(!is_dir($root) ) { // le répertoire n'existe pas : on crée
 			Folder::create($root,755);
 		}
