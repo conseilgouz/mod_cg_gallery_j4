@@ -1,7 +1,7 @@
 <?php
 /**
 * CG Gallery - Joomla Module 
-* Version			: 2.3.1
+* Version			: 2.3.7
 * Package			: Joomla 4.x/5x
 * copyright 		: Copyright (C) 2023 ConseilGouz. All rights reserved.
 * license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
@@ -30,7 +30,7 @@ $ug_space_between_rows = $params->get('ug_space_between_rows');
 $ug_space_between_cols = $params->get('ug_space_between_cols');
 $ug_min_columns = $params->get('ug_min_columns');
 $ug_tile_height = $params->get('ug_tile_height');
-$ug_tile_width = $params->get('ug_tile_width');
+$ug_tile_width = $params->get('ug_tile_width',200);
 $ug_carousel_autoplay_timeout = $params->get('ug_carousel_autoplay_timeout');
 $ug_carousel_scroll_duration = $params->get('ug_carousel_scroll_duration');
 $ug_link = $params->get('ug_link');

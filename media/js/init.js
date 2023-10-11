@@ -1,9 +1,9 @@
 /**
 * CG Gallery - Joomla Module 
-* Version			: 2.3.0
-* Package			: Joomla 4.0.x
-* copyright 		: Copyright (C) 2022 ConseilGouz. All rights reserved.
-* license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+* Version			: 2.3.7
+* Package			: Joomla 4.x/5.x
+* copyright 		: Copyright (C) 2023 ConseilGouz. All rights reserved.
+* license    		: https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
 */
 jQuery(document).ready(function($) {
 var options;
@@ -107,7 +107,7 @@ function go_gallery (myid,options) {
 			jQuery.extend($params,{tiles_space_between_rows:parseInt(options.ug_space_between_rows),tiles_space_between_cols:parseInt(options.ug_space_between_cols),tiles_min_columns:parseInt(options.ug_min_columns)});
 		}
 		if (options.ug_tiles_type == "tilesgrid") { 
-			jQuery.extend($params,{gallery_theme: "tilesgrid",grid_num_rows:parseInt(options.ug_grid_num_rows),tile_height:parseInt(options.ug_tile_height),grid_space_between_rows:parseInt(options.ug_space_between_rows),grid_space_between_cols:parseInt(options.ug_space_between_cols)});
+			jQuery.extend($params,{gallery_theme: "tilesgrid",tile_width:parseInt(options.ug_tile_width),grid_num_rows:parseInt(options.ug_grid_num_rows),tile_height:parseInt(options.ug_tile_height),grid_space_between_rows:parseInt(options.ug_space_between_rows),grid_space_between_cols:parseInt(options.ug_space_between_cols)});
 		}
 		if (options.ug_tiles_type == "nested") {
 			jQuery.extend($params,{gallery_theme: "tiles",tiles_type: "nested",tiles_nested_optimal_tile_width:parseInt(options.ug_tile_width),tiles_space_between_rows:parseInt(options.ug_space_between_rows),tiles_space_between_cols:parseInt(options.ug_space_between_cols)});

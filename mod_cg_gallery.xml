@@ -5,12 +5,12 @@
 	method="upgrade">
 	<name>CG Gallery</name>
 	<author>ConseilGouz</author>
-	<creationDate>2023-09-06</creationDate>
+	<creationDate>2023-10-11</creationDate>
 	<copyright>Copyright (C) 2023 ConseilGouz. All rights reserved.</copyright>
-	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<license>https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
 	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>
 	<authorUrl>www.conseilgouz.com</authorUrl>
-	<version>2.3.6</version>
+	<version>2.3.7</version>
 	<description>CGGALDESC</description>
 	<namespace path="src">ConseilGouz\Module\CGGallery</namespace>
 	<scriptfile>script.php</scriptfile>
@@ -71,7 +71,7 @@
 				type="text"
 				default="200"
 				class="validate-numeric"
-				showon="ug_type:tiles[AND]ug_tiles_type:nested[OR]ug_type:carousel,slider"
+				showon="ug_type:tiles[AND]ug_tiles_type:nested,tilesgrid[OR]ug_type:carousel,slider"
 				label="SAG_TILE_WIDTH"
 				description="SAG_TILE_WIDTHDESC"
 				/>
@@ -278,7 +278,15 @@
 		/>
 				
 			</fieldset>
-			
+			<fieldset
+				name="advanced">
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="" />
+
+			</fieldset>
 		</fields>
 	</config>
 	<changelogurl>https://raw.githubusercontent.com/conseilgouz/mod_cg_gallery_j4/master/mod_cg_gallery_changelog.xml</changelogurl>
