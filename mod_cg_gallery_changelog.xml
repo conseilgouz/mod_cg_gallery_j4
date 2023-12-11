@@ -2,6 +2,17 @@
 	<changelog>
 		<element>mod_cg_gallery</element>
 		<type>Module</type>
+		<version>2.3.8</version>
+        <note>
+            <item>Update : 11/10/2023</item>
+        </note>
+		<fix>
+			<item>desc.txt : leave native characters (greek for example)</item>
+		</fix>
+	</changelog>
+	<changelog>
+		<element>mod_cg_gallery</element>
+		<type>Module</type>
 		<version>2.3.7</version>
         <note>
             <item>Update : 11/10/2023</item>

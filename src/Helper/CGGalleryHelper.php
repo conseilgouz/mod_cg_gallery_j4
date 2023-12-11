@@ -1,10 +1,10 @@
 <?php
 /**
 * CG Gallery - Joomla Module 
-* Version			: 2.3.5
+* Version			: 2.3.8
 * Package			: Joomla 4.x/5.x
 * copyright 		: Copyright (C) 2023 ConseilGouz. All rights reserved.
-* license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+* license    		: https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
 */
 namespace ConseilGouz\Module\CGGallery\Site\Helper;
 // no direct access
@@ -180,7 +180,7 @@ class CGGalleryHelper
 			$contents = substr($contents, 3);  // remove UTF-8 BOM
 		}
 		$contents = str_replace("\r", "\n", $contents);  // normalize line endings
-		$contents = strtr($contents, '���������������������������', 'aaaaaaceeeeiiiinooooouuuuyy');
+		// $contents = strtr($contents, '���������������������������', 'aaaaaaceeeeiiiinooooouuuuyy');
 		// split into lines
 		$matches = array();
 		preg_match_all('/^([^|\n]+)(?:[|]([^|\n]*)(?:[|]([^\n]*))?)?$/mu', $contents, $matches, PREG_SET_ORDER);

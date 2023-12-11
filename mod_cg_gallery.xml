@@ -5,12 +5,12 @@
 	method="upgrade">
 	<name>CG Gallery</name>
 	<author>ConseilGouz</author>
-	<creationDate>2023-10-11</creationDate>
+	<creationDate>2023-12-11</creationDate>
 	<copyright>Copyright (C) 2023 ConseilGouz. All rights reserved.</copyright>
 	<license>https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
 	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>
 	<authorUrl>www.conseilgouz.com</authorUrl>
-	<version>2.3.7</version>
+	<version>2.3.8</version>
 	<description>CGGALDESC</description>
 	<namespace path="src">ConseilGouz\Module\CGGallery</namespace>
 	<scriptfile>script.php</scriptfile>
