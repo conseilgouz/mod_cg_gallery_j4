@@ -10,7 +10,7 @@
 	<license>https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
 	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>
 	<authorUrl>www.conseilgouz.com</authorUrl>
-	<version>2.3.8</version>
+	<version>2.3.9</version>
 	<description>CGGALDESC</description>
 	<namespace path="src">ConseilGouz\Module\CGGallery</namespace>
 	<scriptfile>script.php</scriptfile>
@@ -203,6 +203,24 @@
 					<option value="true">JYES</option>
 					<option value="false">JNO</option>
 				</field>
+				<field 
+				name="ug_lightbox"
+				type="list"
+				default="true"
+				label="SAG_LIGHTBOX"
+				description="SAG_LIGHTBOXDESC"
+				>
+				<option value="true">JYES</option>
+				<option value="false">JNO</option>
+				</field>
+				<field 
+				name="ug_skin"
+				showon="ug_type:carousel"
+				type="folderlist"
+				directory="media/mod_cg_gallery/unitegallery/skins" default="default"
+				label="SAG_SKIN"
+				description="SAG_SKINDESC"
+				/>
 			</fieldset>
 			<fieldset name="directory" 
 				label="SAG_IMGSEL"

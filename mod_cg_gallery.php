@@ -1,9 +1,9 @@
 <?php
 /**
 * CG Gallery - Joomla Module 
-* Version			: 2.3.7
+* Version			: 2.3.9
 * Package			: Joomla 4.x/5x
-* copyright 		: Copyright (C) 2023 ConseilGouz. All rights reserved.
+* copyright 		: Copyright (C) 2024 ConseilGouz. All rights reserved.
 * license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
 */
 // no direct access
@@ -38,12 +38,15 @@ $ug_lightbox = $params->get('ug_lightbox');
 $ug_zoom = $params->get('ug_zoom','true');
 $ug_grid_thumbs_pos = $params->get('ug_grid_thumbs_pos','right');
 $ug_grid_show_icons = $params->get('ug_grid_show_icons','true');
-
+$ug_skin	= $params->get('ug_skin', 'default');
 // HTMLHelper::_('bootstrap.framework');		
 HTMLHelper::_('jquery.framework'); 
 				 
 $document->addStyleSheet($modulefield.'unitegallery/css/unite-gallery.css');
 $document->addScript($modulefield.'unitegallery/js/unitegallery.min.js');
+if ($ug_skin != 'default') {
+$document->addStyleSheet($modulefield.'unitegallery/skins/'.$ug_skin.'/'.$ug_skin.'.css');
+}
 $document->addScriptOptions('cg_gallery_'.$module->id, 
 	array('ug_type' => $ug_type,'ug_texte' => $ug_texte,
 		  'ug_tiles_type' => $ug_tiles_type,
@@ -56,7 +59,8 @@ $document->addScriptOptions('cg_gallery_'.$module->id,
 		  'ug_carousel_scroll_duration' => $ug_carousel_scroll_duration,
 		  'ug_link'=> $ug_link,
 		  'ug_lightbox'=>$ug_lightbox,'ug_zoom'=>$ug_zoom,
-		  'ug_grid_thumbs_pos'=>$ug_grid_thumbs_pos, 'ug_grid_show_icons'=>$ug_grid_show_icons
+		  'ug_grid_thumbs_pos'=>$ug_grid_thumbs_pos, 'ug_grid_show_icons'=>$ug_grid_show_icons,
+		  'ug_skin'=>$ug_skin
 ));
 if ($ug_type == "tiles") {
 	if ($ug_tiles_type == "tilesgrid") {
