@@ -2,7 +2,7 @@
 <form>
      <fieldset name="section" >
 		<field name="file_desc" type="text"	default="" label="SAG_FILE_DESC" description="SAG_FILE_DESC_DESC"/>
-		<field name="file_name" type="media" default="" label="SAG_FILE_NAME" description="SAG_FILE_NAME_DESC" preview="tooltip" preview_width="100" preview_height="100">
+		<field name="file_name" type="media" default="" label="SAG_FILE_NAME" description="SAG_FILE_NAME_DESC" preview="tooltip" preview_width="100" preview_height="100" required="required">
 		</field>
 		<field name="file_id" type="sql" default="" label="SAG_FILE_ID" description="SAG_FILE_ID_DESC"
 		query="SELECT id, title FROM #__content where state = 1"

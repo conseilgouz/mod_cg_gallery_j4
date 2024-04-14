@@ -27,7 +27,7 @@ if ($params->get('ug_dir_or_image') == "dir") { // images d'un répertoire
 		echo '</div>';  // on ferme la div ouverte
 		return false;
 	}
-	$files = Folder::files($ug_big_dir,null,null ,null , array('desc.txt','index.html','.htaccess'));
+	$files = Folder::files($ug_big_dir,$filter,null ,null , array('desc.txt','index.html','.htaccess'));
 	$desc = CGGalleryHelper::getDesc($ug_big_dir); // récupération fichier description s'il existe
 	if (count($files) == 0) { ?>
 		<img src ="<?php echo $modulefield;?>unitegallery/images/pasdimage.png" 

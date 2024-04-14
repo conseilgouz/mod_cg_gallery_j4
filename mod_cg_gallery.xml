@@ -5,12 +5,12 @@
 	method="upgrade">
 	<name>CG Gallery</name>
 	<author>ConseilGouz</author>
-	<creationDate>2023-12-11</creationDate>
-	<copyright>Copyright (C) 2023 ConseilGouz. All rights reserved.</copyright>
+	<creationDate>2024-04-14</creationDate>
+	<copyright>Copyright (C) 2024 ConseilGouz. All rights reserved.</copyright>
 	<license>https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
 	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>
 	<authorUrl>www.conseilgouz.com</authorUrl>
-	<version>2.3.9</version>
+	<version>2.4.0</version>
 	<description>CGGALDESC</description>
 	<namespace path="src">ConseilGouz\Module\CGGallery</namespace>
 	<scriptfile>script.php</scriptfile>
@@ -42,6 +42,7 @@
 			<fieldset name="basic" addfieldprefix="ConseilGouz\Module\CGGallery\Site\Field">
 				<field name="version" type="version"  margintop="-3em" extension="mod_cg_gallery"/>
 				<field name = "noteaff1" type="note" label="SAG_NOTE" />
+                <field name="base_dir" type="text"	default="images" label="SAG_BASE_DIR_DESC" description="SAG_BASE_DIR_DESC_DESC"/>
 			</fieldset>
 			<fieldset name="general" label="SAG_GENE">
 				<field 	name = "noteaff" type="note" label="SAG_GENENOTE" />
@@ -249,8 +250,8 @@
 				<field 
 					name="ug_big_dir" 
 					type="folderlist"
-					default="images" recursive="true"
-					exclude="^administrator|^api|^cli|^components|^includes|^language|^layouts|^libraries|^modules|^plugins"
+                    directory="images"
+					default="" recursive="true"
 					label="SAG_DIR" 
 					description="SAG_DIRDESC"
 					showon="ug_dir_or_image:dir"
@@ -275,6 +276,15 @@
 					label="SAG_DIRNBR"
 					description="SAG_DIRNBRDESC"
 				/>
+                <field showon="ug_dir_or_image:dir" name="imgtypes" type="list" 
+                    label="CG_TYPES" description="CG_TYPES_DESC" 
+                    layout="joomla.form.field.list-fancy-select" multiple="true">
+                    <option value="jpg">JPG</option>
+                    <option value="png">PNG</option>
+                    <option value="gif">GIF</option>
+                    <option value="webp">WEBP</option>
+                </field>
+                
 				<field 
 					name = "noteimage" type="note" label="SAG_IMGNOTE"
 					showon="ug_dir_or_image:file"

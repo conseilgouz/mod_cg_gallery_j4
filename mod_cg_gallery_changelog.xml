@@ -2,6 +2,24 @@
 	<changelog>
 		<element>mod_cg_gallery</element>
 		<type>Module</type>
+		<version>2.4.0</version>
+        <note>
+            <item>Update : 14/04/2024</item>
+        </note>
+		<addition>
+			<item>Add base directory parameter (optimize loading time)</item>
+			<item>Add image type filter</item>
+		</addition>
+		<fix>
+			<item>Handle Webp images</item>
+		</fix>
+        <change>
+            <item>Use CG WebP plugin instead of DJ-Webp (not supported anymore)</item>
+        </change>
+	</changelog>
+	<changelog>
+		<element>mod_cg_gallery</element>
+		<type>Module</type>
 		<version>2.3.9</version>
         <note>
             <item>Update : 12/01/2024</item>

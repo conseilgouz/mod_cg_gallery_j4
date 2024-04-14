@@ -1,10 +1,10 @@
 <?php
 /**
 * CG Gallery - Joomla Module 
-* Version			: 2.1.0
-* Package			: Joomla 4.0.x
-* copyright 		: Copyright (C) 2021 ConseilGouz. All rights reserved.
-* license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+* Version			: 2.4.0
+* Package			: Joomla 4.x/5.x
+* copyright 		: Copyright (C) 2024 ConseilGouz. All rights reserved.
+* license    		: https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
 */
 namespace ConseilGouz\Module\CGGallery\Site\Rule;
 
@@ -149,6 +149,16 @@ class ThumbnailRule extends FormRule
 					return false;
 				}
 				break;
+            case IMAGETYPE_WEBP:
+                if (!function_exists('ImageCreateFromWEBP')) {
+                    return 'ErrorNoWBMPFunction';
+                }
+                try {
+                    $image1 = ImageCreateFromWEBP($fileIn);
+                } catch(\Exception $exception) {
+                    return 'ErrorWBMPFunction';
+                }
+                break;
             Default:
 				$errorMsg = 'ErrorNotSupportedImage';
 				return false;
@@ -165,7 +175,7 @@ class ThumbnailRule extends FormRule
 				ImageCopyResampled($image2, $image1, $dst[0],$dst[1], $src[0],$src[1], $dst[2],$dst[3], $src[2],$src[3]);
 				
 				// Create the file
-	            $typeOut = ($type == IMAGETYPE_WBMP) ? IMAGETYPE_PNG : $type;
+	            $typeOut = $type;
 	            header("Content-type: ". image_type_to_mime_type($typeOut));
 				
 				switch($typeOut) {
@@ -194,14 +204,14 @@ class ThumbnailRule extends FormRule
 							$errorMsg = 'ErrorNoPNGFunction';
 							return false;
 						}
-						
+						ob_start();
 						if (!@ImagePNG($image2, NULL,$compression)) {
 							$errorMsg = 'ErrorWriteFile';
 							return false;
 						}
 						$imgGIFToWrite = ob_get_contents();
 						ob_end_clean();
-						if(!File::write('../'.$fileOut, $imgGIFToWrite)) {
+						if(!File::write($fileOut, $imgGIFToWrite)) {
 							$errorMsg = 'ErrorWriteFile';
 							return false;
 						}
@@ -216,7 +226,7 @@ class ThumbnailRule extends FormRule
 						
 						if ($jfile_thumbs == 1) {
 							ob_start();
-							if (!@ImageGIF($image2, NULL,$compression)) {
+							if (!@ImageGIF($image2, NULL)) {
 								ob_end_clean();
 								$errorMsg = 'ErrorWriteFile';
 								return false;
@@ -234,8 +244,23 @@ class ThumbnailRule extends FormRule
 								return false;
 							}
 						}
-					break;
-		            
+                        break;
+                    case IMAGETYPE_WEBP:
+                        if (!function_exists('ImageWEBP')) {
+                            return 'ErrorNoWEBPFunction';
+                            }
+                        ob_start();
+
+                        if (!imagewebp($image2, null, $compression)) {
+                            ob_end_clean();
+                            return 'ErrorWriteFile';
+                        }
+                        $imgWEBPToWrite = ob_get_contents();
+                        ob_end_clean();
+                        if(!File::write($fileOut, $imgWEBPToWrite)) {
+                            return 'ErrorWriteFile';
+                        }
+                        break;
 					Default:
 						$errorMsg = 'ErrorNotSupportedImage';
 						return false;
@@ -244,7 +269,6 @@ class ThumbnailRule extends FormRule
 				// free memory
 				ImageDestroy($image1);
 	            ImageDestroy($image2);
-								
 			}
 		return true;
 	}
