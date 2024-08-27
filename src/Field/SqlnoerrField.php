@@ -1,26 +1,18 @@
 <?php
 /**
 * CG Gallery - Joomla Module 
-* Version			: 2.1.0
 * Package			: Joomla 4.0.x
-* copyright 		: Copyright (C) 2021 ConseilGouz. All rights reserved.
+* copyright 		: Copyright (C) 2024 ConseilGouz. All rights reserved.
 * license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
 */
 namespace ConseilGouz\Module\CGGallery\Field;
-
 defined('JPATH_PLATFORM') or die;
-use Joomla\CMS\Factory;
 use Joomla\CMS\Form\Field\SqlField;
-use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Language\Text;
+use Joomla\CMS\Factory;
 
-class SqlNoErrField extends SQLField
+class SQLnoerrField extends SqlField
 {
 	public $type = 'SQLnoerr';
-	protected $keyField;
-	protected $valueField;
-	protected $translate = false;
-	protected $query;
 
 	/**
 	 * Method to check if SQL query contains errors
@@ -40,14 +32,20 @@ class SqlNoErrField extends SQLField
 			// Get the database object.
 			$db = Factory::getDbo();
 
+			try
+			{
 			// Set the query and get the result list.
-			$db->setQuery($this->query);
-
+				$db->setQuery($this->query);
+			}
+			catch (\Exception $e)
+			{
+				 return $options; // SQL Error : return empty
+			}
 			try
 			{
 				$items = $db->loadObjectlist();
 			}
-			catch (JDatabaseExceptionExecuting $e)
+			catch (\Exception $e)
 			{
 				 return $options; // SQL Error : return empty
 			}
