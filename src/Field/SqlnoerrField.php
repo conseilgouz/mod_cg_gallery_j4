@@ -1,14 +1,14 @@
 <?php
 /**
 * CG Gallery - Joomla Module 
-* Package			: Joomla 4.0.x
-* copyright 		: Copyright (C) 2024 ConseilGouz. All rights reserved.
-* license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+* copyright 		: Copyright (C) 2025 ConseilGouz. All rights reserved.
+* license    		: https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
 */
 namespace ConseilGouz\Module\CGGallery\Field;
 defined('JPATH_PLATFORM') or die;
 use Joomla\CMS\Form\Field\SqlField;
 use Joomla\CMS\Factory;
+use Joomla\Database\DatabaseInterface;
 
 class SQLnoerrField extends SqlField
 {
@@ -30,7 +30,7 @@ class SQLnoerrField extends SqlField
 		if ($this->query)
 		{
 			// Get the database object.
-			$db = Factory::getDbo();
+			$db = Factory::getContainer()->get(DatabaseInterface::class);
 
 			try
 			{

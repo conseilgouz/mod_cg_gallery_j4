@@ -1,10 +1,9 @@
 <?php
 /**
 * CG Gallery - Joomla Module
-* Version			: 2.4.0
 * Package			: Joomla 4.x/5x
-* copyright 		: Copyright (C) 2024 ConseilGouz. All rights reserved.
-* license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+* copyright 		: Copyright (C) 2025 ConseilGouz. All rights reserved.
+* license    		: https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
 */
 // no direct access
 defined('_JEXEC') or die;
@@ -13,9 +12,9 @@ use Joomla\CMS\Helper\ModuleHelper;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Uri\Uri;
 
-$document 		= Factory::getDocument();
+$document 		= Factory::getApplication()->getDocument();
 $baseurl 		= URI::base();
-$modulefield	= ''.URI::base(true).'/media/mod_cg_gallery/';
+$modulefield	= 'media/mod_cg_gallery/';
 
 //Get this module id
 $nummod_sf		= $module->id;
@@ -61,10 +60,16 @@ if ($allowedExtensions) {
 // HTMLHelper::_('bootstrap.framework');
 HTMLHelper::_('jquery.framework');
 
-$document->addStyleSheet($modulefield.'unitegallery/css/unite-gallery.css');
-$document->addScript($modulefield.'unitegallery/js/unitegallery.min.js');
+/** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
+$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+if ($params->get('css_gen')) { // Custom CSS ?
+    $wa->addInlineStyle($params->get('css_gen'));
+}
+
+$wa->registerAndUseStyle('unitecss', $modulefield.'unitegallery/css/unite-gallery.css');
+$wa->registerAndUseScript('unitejs', $modulefield.'unitegallery/js/unitegallery.min.js');
 if ($ug_skin != 'default') {
-    $document->addStyleSheet($modulefield.'unitegallery/skins/'.$ug_skin.'/'.$ug_skin.'.css');
+    $wa->registerAndUseStyle('ugskin', $modulefield.'unitegallery/skins/'.$ug_skin.'/'.$ug_skin.'.css');
 }
 $document->addScriptOptions(
     'cg_gallery_'.$module->id,
@@ -85,19 +90,19 @@ $document->addScriptOptions(
 );
 if ($ug_type == "tiles") {
     if ($ug_tiles_type == "tilesgrid") {
-        $document->addScript($modulefield.'unitegallery/themes/tilesgrid/ug-theme-tilesgrid.js');
+        $wa->registerAndUseScript('unitetilesgrid', $modulefield.'unitegallery/themes/tilesgrid/ug-theme-tilesgrid.js');
     } else {
-        $document->addScript($modulefield.'unitegallery/themes/tiles/ug-theme-tiles.js');
+        $wa->registerAndUseScript('unitetiles', $modulefield.'unitegallery/themes/tiles/ug-theme-tiles.js');
     }
 }
 if ($ug_type == "grid") {
-    $document->addScript($modulefield.'unitegallery/themes/grid/ug-theme-grid.js');
+    $wa->registerAndUseScript('unitegrid', $modulefield.'unitegallery/themes/grid/ug-theme-grid.js');
 }
 if ($ug_type == "carousel") {
-    $document->addScript($modulefield.'unitegallery/themes/carousel/ug-theme-carousel.js');
+    $wa->registerAndUseScript('unitecarousel', $modulefield.'unitegallery/themes/carousel/ug-theme-carousel.js');
 }
 if ($ug_type == "slider") {
-    $document->addScript($modulefield.'unitegallery/themes/slider/ug-theme-slider.js');
+    $wa->registerAndUseScript('uniteslider', $modulefield.'unitegallery/themes/slider/ug-theme-slider.js');
 }
-$document->addScript($modulefield.'js/init.js');
+$wa->registerAndUseScript('cggallery', $modulefield.'js/init.js');
 require ModuleHelper::getLayoutPath('mod_cg_gallery', $params->get('layout', 'default'));

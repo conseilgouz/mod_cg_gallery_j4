@@ -1,18 +1,18 @@
 <?php
 /**
 * CG Gallery Module  - Joomla 4.x/5.x Module
-* Version			: 2.4.0
 * Package			: CG Gallery
-* copyright 		: Copyright (C) 2024 ConseilGouz. All rights reserved.
+* copyright 		: Copyright (C) 2025 ConseilGouz. All rights reserved.
 * license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
 */
 // No direct access to this file
 defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
-use Joomla\Filesystem\Folder;
 use Joomla\CMS\Version;
+use Joomla\Database\DatabaseInterface;
 use Joomla\Filesystem\File;
+use Joomla\Filesystem\Folder;
 
 class mod_cg_galleryInstallerScript
 {
@@ -106,7 +106,7 @@ class mod_cg_galleryInstallerScript
             }
         }
         // version 2.4.0 : base_dir parameter : fix ug_big_dir
-        $db = Factory::getDbo();
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
         $pages = $db->setQuery(
             $db->getQuery(true)
             ->select('id,params')
@@ -180,7 +180,7 @@ class mod_cg_galleryInstallerScript
             JPATH_PLUGINS . '/system/' . $this->installerName . '/language',
             JPATH_PLUGINS . '/system/' . $this->installerName,
         ]);
-        $db = Factory::getDbo();
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
         $query = $db->getQuery(true)
             ->delete('#__extensions')
             ->where($db->quoteName('element') . ' = ' . $db->quote($this->installerName))
@@ -189,6 +189,18 @@ class mod_cg_galleryInstallerScript
         $db->setQuery($query);
         $db->execute();
         Factory::getCache()->clean('_system');
+    }
+    public function delete($files = [])
+    {
+        foreach ($files as $file) {
+            if (is_dir($file)) {
+                Folder::delete($file);
+            }
+
+            if (is_file($file)) {
+                File::delete($file);
+            }
+        }
     }
 
 }

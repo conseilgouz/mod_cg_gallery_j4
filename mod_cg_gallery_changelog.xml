@@ -2,6 +2,26 @@
 	<changelog>
 		<element>mod_cg_gallery</element>
 		<type>Module</type>
+		<version>2.4.2</version>
+        <note>
+            <item>Update : 19/01/2025</item>
+        </note>
+		<addition>
+			<item>Add Custom CSS</item>
+		</addition>
+		<fix>
+			<item>Joomla 6.x compatibility</item>
+		</fix>
+		<change>
+			<item>Use WebAssets</item>
+		</change>
+		<remove>
+			<item>Remove k2 support</item>
+		</remove>
+	</changelog>
+	<changelog>
+		<element>mod_cg_gallery</element>
+		<type>Module</type>
 		<version>2.4.1</version>
         <note>
             <item>Update : 27/08/2024</item>

@@ -1,17 +1,15 @@
 <?php
 /**
 * CG Gallery - Joomla Module 
-* Version			: 2.3.1
 * Package			: Joomla 4.x/5.x
-* copyright 		: Copyright (C) 2023 ConseilGouz. All rights reserved.
-* license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+* copyright 		: Copyright (C) 2025 ConseilGouz. All rights reserved.
+* license    		: https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
 */
 // no direct access
 defined('_JEXEC') or die;
-
+use Joomla\CMS\Uri\Uri;
 use Joomla\Filesystem\Folder;
 use Joomla\Filesystem\File;
-use Joomla\CMS\Uri\Uri;
 use ConseilGouz\Module\CGGallery\Site\Helper\CGGalleryHelper;
 
 $uri = Uri::getInstance();
