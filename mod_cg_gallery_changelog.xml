@@ -2,6 +2,17 @@
 	<changelog>
 		<element>mod_cg_gallery</element>
 		<type>Module</type>
+		<version>2.4.3</version>
+        <note>
+            <item>Update : 28/03/2025</item>
+        </note>
+		<fix>
+			<item>Restore uniteGallery from 2.4.1 version</item>
+		</fix>
+	</changelog>
+	<changelog>
+		<element>mod_cg_gallery</element>
+		<type>Module</type>
 		<version>2.4.2</version>
         <note>
             <item>Update : 19/03/2025</item>

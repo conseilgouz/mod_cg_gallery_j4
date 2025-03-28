@@ -13968,8 +13968,7 @@ function UGSlider(){
 			if(g_options.slider_links_newpage == false){
 				location.href = objItem.link;
 			}else{
-				var newWnd = window.open(objItem.link, '_blank');			
-				newWnd.opener = null;
+				window.open(objItem.link, '_blank');			
 			}
 			
 			return(true);
