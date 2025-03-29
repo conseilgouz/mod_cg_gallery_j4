@@ -10,12 +10,12 @@
 	<license>https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
 	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>
 	<authorUrl>www.conseilgouz.com</authorUrl>
-	<version>2.4.4</version>
+	<version>2.4.5</version>
 	<description>CGGALDESC</description>
 	<namespace path="src">ConseilGouz\Module\CGGallery</namespace>
 	<scriptfile>script.php</scriptfile>
 	<files>
-		<filename module="mod_cg_gallery">mod_cg_gallery.php</filename>
+		<folder module="mod_cg_gallery">services</folder>
 		<filename>index.html</filename>
 		<filename>mod_cg_gallery.xml</filename>
 		<filename>slidelist.xml</filename>

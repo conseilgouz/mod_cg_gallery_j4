@@ -82,7 +82,10 @@ class mod_cg_galleryInstallerScript
 
             Folder::delete($f);
         }
-        $obsloteFiles = [sprintf("%s/modules/mod_%s/helper.php", JPATH_SITE, $this->extname)];
+        $obsloteFiles = [sprintf("%s/modules/mod_%s/helper.php", JPATH_SITE, $this->extname),
+						 sprintf("%s/modules/mod_%s/mod_%s.php", JPATH_SITE, $this->extname,$this->extname),
+						 sprintf("%s/modules/mod_%s/slidelistk2.xml", JPATH_SITE, $this->extname)
+						];
         foreach ($obsloteFiles as $file) {
             if (@is_file($file)) {
                 File::delete($file);
