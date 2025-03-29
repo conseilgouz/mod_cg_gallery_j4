@@ -66,10 +66,10 @@ if ($params->get('css_gen')) { // Custom CSS ?
     $wa->addInlineStyle($params->get('css_gen'));
 }
 
-$wa->registerAndUseStyle('unitecss', $modulefield.'unitegallery/css/unite-gallery.css');
-$wa->registerAndUseScript('unitejs', $modulefield.'unitegallery/js/unitegallery.min.js');
+$wa->registerAndUseStyle('cgunitecss', $modulefield.'unitegallery/css/unite-gallery.css');
+$wa->registerAndUseScript('cgunitejs', $modulefield.'unitegallery/js/unitegallery.min.js');
 if ($ug_skin != 'default') {
-    $wa->registerAndUseStyle('ugskin', $modulefield.'unitegallery/skins/'.$ug_skin.'/'.$ug_skin.'.css');
+    $wa->registerAndUseStyle('cgugskin', $modulefield.'unitegallery/skins/'.$ug_skin.'/'.$ug_skin.'.css');
 }
 $document->addScriptOptions(
     'cg_gallery_'.$module->id,
@@ -90,19 +90,19 @@ $document->addScriptOptions(
 );
 if ($ug_type == "tiles") {
     if ($ug_tiles_type == "tilesgrid") {
-        $wa->registerAndUseScript('unitetilesgrid', $modulefield.'unitegallery/themes/tilesgrid/ug-theme-tilesgrid.js');
+        $wa->registerAndUseScript('cgunitetilesgrid', $modulefield.'unitegallery/themes/tilesgrid/ug-theme-tilesgrid.js');
     } else {
-        $wa->registerAndUseScript('unitetiles', $modulefield.'unitegallery/themes/tiles/ug-theme-tiles.js');
+        $wa->registerAndUseScript('cgunitetiles', $modulefield.'unitegallery/themes/tiles/ug-theme-tiles.js');
     }
 }
 if ($ug_type == "grid") {
-    $wa->registerAndUseScript('unitegrid', $modulefield.'unitegallery/themes/grid/ug-theme-grid.js');
+    $wa->registerAndUseScript('cgunitegrid', $modulefield.'unitegallery/themes/grid/ug-theme-grid.js');
 }
 if ($ug_type == "carousel") {
-    $wa->registerAndUseScript('unitecarousel', $modulefield.'unitegallery/themes/carousel/ug-theme-carousel.js');
+    $wa->registerAndUseScript('cgunitecarousel', $modulefield.'unitegallery/themes/carousel/ug-theme-carousel.js');
 }
 if ($ug_type == "slider") {
-    $wa->registerAndUseScript('uniteslider', $modulefield.'unitegallery/themes/slider/ug-theme-slider.js');
+    $wa->registerAndUseScript('cguniteslider', $modulefield.'unitegallery/themes/slider/ug-theme-slider.js');
 }
 $wa->registerAndUseScript('cggallery', $modulefield.'js/init.js');
 require ModuleHelper::getLayoutPath('mod_cg_gallery', $params->get('layout', 'default'));

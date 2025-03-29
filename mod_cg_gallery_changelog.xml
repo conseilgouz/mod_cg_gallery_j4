@@ -2,6 +2,17 @@
 	<changelog>
 		<element>mod_cg_gallery</element>
 		<type>Module</type>
+		<version>2.4.4</version>
+        <note>
+            <item>Update : 29/03/2025</item>
+        </note>
+		<fix>
+			<item>WebAssets : name conflicts</item>
+		</fix>
+	</changelog>
+	<changelog>
+		<element>mod_cg_gallery</element>
+		<type>Module</type>
 		<version>2.4.3</version>
         <note>
             <item>Update : 28/03/2025</item>
