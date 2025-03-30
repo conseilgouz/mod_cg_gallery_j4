@@ -9,6 +9,9 @@
 		<change>
 			<item>Becomes a service provider</item>
 		</change>
+		<fix>
+			<item>Defer init.js load</item>
+		</fix>
 	</changelog>
 	<changelog>
 		<element>mod_cg_gallery</element>

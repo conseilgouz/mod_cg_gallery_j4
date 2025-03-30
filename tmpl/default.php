@@ -74,23 +74,6 @@ $wa->registerAndUseScript('cgunitejs', $modulefield.'unitegallery/js/unitegaller
 if ($ug_skin != 'default') {
     $wa->registerAndUseStyle('cgugskin', $modulefield.'unitegallery/skins/'.$ug_skin.'/'.$ug_skin.'.css');
 }
-$document->addScriptOptions(
-    'cg_gallery_'.$module->id,
-    array('ug_type' => $ug_type,'ug_texte' => $ug_texte,
-          'ug_tiles_type' => $ug_tiles_type,
-          'ug_grid_num_rows' => $ug_grid_num_rows,
-          'ug_space_between_rows' => $ug_space_between_rows,'ug_space_between_cols' => $ug_space_between_cols,
-          'ug_min_columns' => $ug_min_columns,
-          'ug_tile_height' => $ug_tile_height,
-          'ug_tile_width' => $ug_tile_width,
-          'ug_carousel_autoplay_timeout' => $ug_carousel_autoplay_timeout,
-          'ug_carousel_scroll_duration' => $ug_carousel_scroll_duration,
-          'ug_link' => $ug_link,
-          'ug_lightbox' => $ug_lightbox,'ug_zoom' => $ug_zoom,
-          'ug_grid_thumbs_pos' => $ug_grid_thumbs_pos, 'ug_grid_show_icons' => $ug_grid_show_icons,
-          'ug_skin' => $ug_skin
-)
-);
 if ($ug_type == "tiles") {
     if ($ug_tiles_type == "tilesgrid") {
         $wa->registerAndUseScript('cgunitetilesgrid', $modulefield.'unitegallery/themes/tilesgrid/ug-theme-tilesgrid.js');
@@ -107,8 +90,25 @@ if ($ug_type == "carousel") {
 if ($ug_type == "slider") {
     $wa->registerAndUseScript('cguniteslider', $modulefield.'unitegallery/themes/slider/ug-theme-slider.js');
 }
-$wa->registerAndUseScript('cggallery', $modulefield.'js/init.js');
+$wa->registerAndUseScript('cggallery', $modulefield.'js/init.js',[],['defer'=>true]);
 
+$document->addScriptOptions(
+    'cg_gallery_'.$module->id,
+    array('ug_type' => $ug_type,'ug_texte' => $ug_texte,
+          'ug_tiles_type' => $ug_tiles_type,
+          'ug_grid_num_rows' => $ug_grid_num_rows,
+          'ug_space_between_rows' => $ug_space_between_rows,'ug_space_between_cols' => $ug_space_between_cols,
+          'ug_min_columns' => $ug_min_columns,
+          'ug_tile_height' => $ug_tile_height,
+          'ug_tile_width' => $ug_tile_width,
+          'ug_carousel_autoplay_timeout' => $ug_carousel_autoplay_timeout,
+          'ug_carousel_scroll_duration' => $ug_carousel_scroll_duration,
+          'ug_link' => $ug_link,
+          'ug_lightbox' => $ug_lightbox,'ug_zoom' => $ug_zoom,
+          'ug_grid_thumbs_pos' => $ug_grid_thumbs_pos, 'ug_grid_show_icons' => $ug_grid_show_icons,
+          'ug_skin' => $ug_skin
+    )
+);
 
 $uri = Uri::getInstance();
 
@@ -253,4 +253,4 @@ if ($params->get('ug_dir_or_image') == "dir") { // images d'un répertoire
 		} 
 }
 ?>	
-	</div>
+</div>
